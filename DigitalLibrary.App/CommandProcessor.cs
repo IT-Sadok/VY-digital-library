@@ -115,7 +115,6 @@ namespace DigitalLibrary.App
                         }
 
                         var flag = args[1];
-                        //var value = string.Join(' ', args.Skip(2)).ToLower();
                         var value = args[2];
                         var results = new List<Book>();
 
