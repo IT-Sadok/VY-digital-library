@@ -1,4 +1,4 @@
-﻿namespace DigitalLibrary.Core
+﻿namespace DigitalLibrary.Core.Models
 {
     public class Book
     {
@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public string Author { get; set; }
         public int Year { get; set; }
+        public BookStatus Status { get; set; } = BookStatus.Available;
     }
 }

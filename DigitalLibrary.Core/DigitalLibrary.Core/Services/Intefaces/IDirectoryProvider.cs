@@ -1,4 +1,4 @@
-﻿namespace DigitalLibrary.Core
+﻿namespace DigitalLibrary.Core.Services.Intefaces
 {
     public interface IDirectoryProvider
     {

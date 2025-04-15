@@ -1,8 +1,12 @@
-﻿using System.Text.Json;
+﻿using DigitalLibrary.Core.Models;
+using DigitalLibrary.Core.Repository.Interfaces;
+using DigitalLibrary.Core.Services.Intefaces;
+using System.Text.Json;
+using System.Xml.Linq;
 
-namespace DigitalLibrary.Core
+namespace DigitalLibrary.Core.Repository
 {
-    public class BookDatabase : IJsonDataBase<Book>
+    public class BookDatabase : IJsonDataBase<Book>, IBookDatabase
     {
         private readonly string _filePath;
         private readonly List<Book> _books;
@@ -68,5 +72,33 @@ namespace DigitalLibrary.Core
             book.Year = entity.Year;
         }
 
+        public List<Book> GetBookByName(string name)
+        {
+            var books = _books.Where(b => b.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
+            if (books == null) throw new Exception($"Book with author {name} wasn't found");
+            return books;
+        }
+
+        public List<Book> GetBookByAuthor(string author)
+        {
+            var books = _books.Where(b => b.Author.Contains(author, StringComparison.OrdinalIgnoreCase)).ToList();
+            if (books == null) throw new Exception($"Book with author {author} wasn't found");
+            return books;
+        }
+
+        public void CheckoutBook(int id)
+        {
+            var book = _books.SingleOrDefault(b => b.Id == id);
+            if (book == null) throw new Exception($"Book with id {id} wasn't found");
+            if (book.Status == BookStatus.Reserved) throw new Exception($"This books is already reserved, please try later");
+            book.Status = BookStatus.Reserved;
+        }
+
+        public void ReturnBook(int id)
+        {
+            var book = _books.SingleOrDefault(b => b.Id == id);
+            if (book == null) throw new Exception($"Book with id {id} wasn't found");
+            book.Status = BookStatus.Available;
+        }
     }
 }

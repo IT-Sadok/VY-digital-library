@@ -1,5 +1,6 @@
 ﻿using DigitalLibrary.App;
-using DigitalLibrary.Core;
+using DigitalLibrary.Core.Repository;
+using DigitalLibrary.Core.Services;
 
 var provider = new DefaultDirectoryProvider();
 var db = new BookDatabase(provider);

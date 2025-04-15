@@ -1,4 +1,6 @@
-﻿namespace DigitalLibrary.Core
+﻿using DigitalLibrary.Core.Services.Intefaces;
+
+namespace DigitalLibrary.Core.Services
 {
     public class DefaultDirectoryProvider : IDirectoryProvider
     {
