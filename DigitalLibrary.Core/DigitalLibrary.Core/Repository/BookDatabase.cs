@@ -2,7 +2,6 @@
 using DigitalLibrary.Core.Repository.Interfaces;
 using DigitalLibrary.Core.Services.Intefaces;
 using System.Text.Json;
-using System.Xml.Linq;
 
 namespace DigitalLibrary.Core.Repository
 {
@@ -12,10 +11,10 @@ namespace DigitalLibrary.Core.Repository
         private readonly List<Book> _books;
         private int _nextId;
 
-        public BookDatabase(IDirectoryProvider provider)
+        public BookDatabase(IDirectoryProvider provider, string filename = "books.json")
         {
             var directory = provider.GetDataDirectory();
-            _filePath = Path.Combine(directory, "books.json");
+            _filePath = Path.Combine(directory, filename);
             if (!File.Exists(_filePath))
             {
                 File.WriteAllText(_filePath, "[]");
