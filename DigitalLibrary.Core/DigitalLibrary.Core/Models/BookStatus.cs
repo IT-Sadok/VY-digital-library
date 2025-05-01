@@ -1,8 +1,7 @@
-﻿namespace DigitalLibrary.Core.Models
+﻿namespace DigitalLibrary.Core.Models;
+
+public enum BookStatus
 {
-    public enum BookStatus
-    {
-        Available,
-        Reserved
-    }
+    Available,
+    Reserved
 }

@@ -1,7 +1,5 @@
-﻿namespace DigitalLibrary.Core.Services.Intefaces
+﻿namespace DigitalLibrary.Core.Services.Intefaces;
+public interface IDirectoryProvider
 {
-    public interface IDirectoryProvider
-    {
-        string GetDataDirectory();
-    }
+    string GetDataDirectory();
 }
