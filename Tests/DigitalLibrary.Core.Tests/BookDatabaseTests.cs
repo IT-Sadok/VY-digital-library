@@ -11,14 +11,15 @@ namespace DigitalLibrary.Core.Tests
     {
         private IDirectoryProvider _directoryProvider;
         private BookDatabase _db;
+        private const string _testFileName = "books-test.json";
 
         [SetUp]
         public void Setup()
         {
             _directoryProvider = new TestDirectoryProvider();
-            _db = new BookDatabase(_directoryProvider);
+            _db = new BookDatabase(_directoryProvider, _testFileName);
 
-            var filePath = Path.Combine(_directoryProvider.GetDataDirectory(), "books.json");
+            var filePath = Path.Combine(_directoryProvider.GetDataDirectory(), _testFileName);
             if (File.Exists(filePath))
                 File.Delete(filePath);
         }

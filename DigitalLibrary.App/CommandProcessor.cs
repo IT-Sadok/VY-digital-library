@@ -7,14 +7,14 @@ namespace DigitalLibrary.App
     {
         private readonly BookDatabase _db;
 
-        private const string command_help = "help";
-        private const string command_list = "list";
-        private const string command_add = "add";
-        private const string command_update = "update";
-        private const string command_delete = "delete";
-        private const string command_find = "find";
-        private const string command_checkout = "checkout";
-        private const string command_return = "return";
+        private const string HelpCommand = "help";
+        private const string ListCommand = "list";
+        private const string AddCommand = "add";
+        private const string UpdateCommand = "update";
+        private const string DeleteCommand = "delete";
+        private const string FindCommand = "find";
+        private const string CheckoutCommand = "checkout";
+        private const string ReturnCommand = "return";
 
         public CommandProcessor(BookDatabase db)
         {
@@ -35,7 +35,7 @@ namespace DigitalLibrary.App
             {
                 switch (command)
                 {
-                    case command_help:
+                    case HelpCommand:
                         Console.WriteLine(
                             "Available commands:\n" +
                             "list                               - List all books\n" +
@@ -50,12 +50,12 @@ namespace DigitalLibrary.App
                         );
                         break;
 
-                    case command_list:
+                    case ListCommand:
                         var books = _db.GetAll();
                         PrintBookTable(books);
                         break;
 
-                    case command_add:
+                    case AddCommand:
                         if (args.Length < 4)
                         {
                             Console.WriteLine("Usage: add <name> <author> <year>");
@@ -75,7 +75,7 @@ namespace DigitalLibrary.App
                         Console.WriteLine("Book added.");
                         break;
 
-                    case command_update:
+                    case UpdateCommand:
                         if (args.Length < 4)
                         {
                             Console.WriteLine("Usage: update <id> <name> <author> <year>");
@@ -100,7 +100,7 @@ namespace DigitalLibrary.App
                         Console.WriteLine("Book added.");
                         break;
 
-                    case command_delete:
+                    case DeleteCommand:
                         if (args.Length < 2 || !int.TryParse(args[1], out int id))
                         {
                             Console.WriteLine("Usage: delete <id>");
@@ -116,7 +116,7 @@ namespace DigitalLibrary.App
                         Console.WriteLine("Unknown command.");
                         break;
 
-                    case command_find:
+                    case FindCommand:
                         if (args.Length < 3)
                         {
                             Console.WriteLine("Usage: find -n <book name> OR find -a <author>");
@@ -148,7 +148,7 @@ namespace DigitalLibrary.App
 
                         break;
 
-                    case command_checkout:
+                    case CheckoutCommand:
                         if (args.Length < 2 || !int.TryParse(args[1], out var checkoutId))
                         {
                             Console.WriteLine("Usage: checkout <id>");
@@ -166,7 +166,7 @@ namespace DigitalLibrary.App
                         }
                         break;
 
-                    case command_return:
+                    case ReturnCommand:
                         if (args.Length < 2 || !int.TryParse(args[1], out var returnId))
                         {
                             Console.WriteLine("Usage: return <id>");

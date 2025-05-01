@@ -11,7 +11,7 @@ namespace DigitalLibrary.Core.Repository
         private readonly List<Book> _books;
         private int _nextId;
 
-        public BookDatabase(IDirectoryProvider provider, string filename = "books.json")
+        public BookDatabase(IDirectoryProvider provider, string filename)
         {
             var directory = provider.GetDataDirectory();
             _filePath = Path.Combine(directory, filename);

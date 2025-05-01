@@ -3,7 +3,7 @@ using DigitalLibrary.Core.Repository;
 using DigitalLibrary.Core.Services;
 
 var provider = new DefaultDirectoryProvider();
-var db = new BookDatabase(provider);
+var db = new BookDatabase(provider, "books.json");
 var processor = new CommandProcessor(db);
 
 Console.WriteLine("Welcome to Digital Library CLI!");
