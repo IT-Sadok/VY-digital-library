@@ -1,7 +1,6 @@
 ﻿using DigitalLibrary.Core.Services.Intefaces;
 
-namespace DigitalLibrary.Core.Services
-{
+namespace DigitalLibrary.Core.Services;
     public class DefaultDirectoryProvider : IDirectoryProvider
     {
         public string GetDataDirectory()
@@ -12,4 +11,3 @@ namespace DigitalLibrary.Core.Services
             return dir;
         }
     }
-}

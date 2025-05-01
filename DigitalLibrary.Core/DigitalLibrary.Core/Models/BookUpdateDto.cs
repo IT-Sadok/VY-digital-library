@@ -1,10 +1,9 @@
-﻿namespace DigitalLibrary.Core.Models
+﻿namespace DigitalLibrary.Core.Models;
+
+class BookUpdateDto
 {
-    class BookUpdateDto
-    {
-        public string Name { get; set; }
-        public string Author { get; set; }
-        public int Year { get; set; }
-        public BookStatus Status { get; set; } 
-    }
+    public string Name { get; set; }
+    public string Author { get; set; }
+    public int Year { get; set; }
+    public BookStatus Status { get; set; }
 }
