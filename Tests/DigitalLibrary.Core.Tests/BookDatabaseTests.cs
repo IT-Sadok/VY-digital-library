@@ -2,7 +2,6 @@
 using DigitalLibrary.Core.Repository;
 using DigitalLibrary.Core.Services.Intefaces;
 using NUnit.Framework;
-//using NUnit.Framework;
 
 namespace DigitalLibrary.Core.Tests
 {
@@ -18,10 +17,6 @@ namespace DigitalLibrary.Core.Tests
         {
             _directoryProvider = new TestDirectoryProvider();
             _db = new BookDatabase(_directoryProvider, _testFileName);
-
-            //var filePath = Path.Combine(_directoryProvider.GetDataDirectory(), _testFileName);
-            //if (File.Exists(filePath))
-            //    File.Delete(filePath);
         }
 
         [TearDown]
@@ -226,7 +221,7 @@ namespace DigitalLibrary.Core.Tests
         [Test]
         public void UpdateMultipleBooksConcurrently_ShouldUpdateAllCorrectly()
         {
-            // Arrange: 
+            // Arrange 
             var booksToAdd = Enumerable.Range(1, 100)
                 .Select(i => new Book
                 {

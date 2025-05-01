@@ -3,12 +3,13 @@ using DigitalLibrary.Core.Repository.Interfaces;
 using DigitalLibrary.Core.Services.Intefaces;
 using System.Text.Json;
 
+namespace DigitalLibrary.Core.Repository;
 public class BookDatabase : IJsonDataBase<Book>, IBookDatabase
 {
     private readonly string _filePath;
     private readonly List<Book> _books;
     private int _nextId;
-    private readonly object _lock = new();
+    private readonly Lock _lock = new();
 
     public BookDatabase(IDirectoryProvider provider, string filename)
     {
@@ -31,7 +32,7 @@ public class BookDatabase : IJsonDataBase<Book>, IBookDatabase
     {
         lock (_lock)
         {
-            return _books.ToList(); // Return a copy to avoid exposing internal list
+            return _books.ToList();
         }
     }
 
